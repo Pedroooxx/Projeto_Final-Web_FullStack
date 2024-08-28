@@ -1,30 +1,45 @@
+// controllers/userController.js
 const userModel = require("../models/userModel");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-const getAll = async (_req, res) => {
-    const users = await userModel.getAll();
-    return res.status(200).json(users);
-};
+require("dotenv").config();
 
 const createUser = async (req, res) => {
-    const createdUser = await userModel.createUser(req.body);
-    return res.status(201).json(createdUser);
+  const password = req.body.password;
+  const hashPassword = bcrypt.hashSync(password, 10);
+  const createdUser = await userModel.createUser({
+    ...req.body,
+    password: hashPassword,
+  });
+  return res.status(201).json(createdUser);
 };
 
-const deleteUser = async (req, res) => {
-    const { id } = req.params;
-    await userModel.deleteUser(id);
-    return res.status(204).json();
-};
+const enterUser = async (req, res) => {
+  const { username, password } = req.body;
+  const user = await userModel.findUserByUsername(username);
 
-const updateUser = async (req, res) => {
-    const { id } = req.params;
-    await userModel.updateUser(id, req.body);
-    res.status(204).json();
+  if (!user) {
+    return res.status(401).json({ message: "Username or password incorrect" });
+  }
+
+  const isPasswordValid = bcrypt.compareSync(password, user.password);
+  if (!isPasswordValid) {
+    return res.status(401).json({ message: "Username or password incorrect" });
+  }
+
+  const token = jwt.sign(
+    { id: user.id, username: user.username },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1h", // Token válido por 1 hora
+    }
+  );
+
+  return res.status(200).json({ token });
 };
 
 module.exports = {
-    getAll,
-    createUser,
-    deleteUser,
-    updateUser,
+  createUser,
+  enterUser,
 };
