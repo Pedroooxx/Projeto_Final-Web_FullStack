@@ -11,15 +11,15 @@ const Hero = () => {
     >
       <div className="flex w-full max-w-[1240px] min-h-80">
         <div className="w-full h-full px-8 lg:grid lg:grid-cols-2 lg:gap-16 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-8">
-          <div className="flex flex-col items-center justify-center text-left">
-            <h1 className="w-full font-sans lg:text-5xl font-light mb-8 sm:text-xl">
+          <div className="flex font-sans flex-col items-center justify-center text-left">
+            <h1 className="w-full lg:text-5xl font-light mb-8 sm:text-xl">
               <strong className="lg:text-7xl text-orange-600 font-black sm:text-2xl">
                 API Fullstack
               </strong>
               <br /> de personagens da série
               <strong className="font-bold mt-4"> Game Of Thrones</strong>
             </h1>
-            <p className="font-sans text-justify font-light lg:text-xl lg:leading-8 sm:text-lg sm:leading-6">
+            <p className="text-justify font-light lg:text-xl lg:leading-8 sm:text-lg sm:leading-6">
               Projeto final da disciplina de Fullstack onde personagens da série
               podem ser armazenados em uma BD MySQL através da tecnologia Docker
               em uma API Back-End node.js integrada em uma aplicação Front-End

@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className="fixed h-40 w-full z-50 flex justify-center backdrop-blur-sm">
+    <div className="fixed top-0 left-0 right-0 h-40 w-full z-50 flex justify-center backdrop-blur-sm">
       <div className="flex w-full max-w-[1240px] h-40 items-center justify-between px-6">
         <img className="h-24" src="/logo.png" alt="Logo" />
         <ul className="flex items-center justify-center gap-20">
