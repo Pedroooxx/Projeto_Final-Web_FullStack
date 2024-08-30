@@ -6,11 +6,11 @@ const Hero = () => {
         backgroundSize: "100% 100%",
         backgroundPosition: "0px 0px",
         backgroundImage:
-          "linear-gradient(295deg, #2A2A2AFF 0%, #000000FF 100%)",
+          "linear-gradient(295deg, #000000FF 0%, #2A2A2AFF 100%)",
       }}
     >
-      <div className="flex w-full max-w-[1240px] min-h-80">
-        <div className="w-full h-full px-8 lg:grid lg:grid-cols-2 lg:gap-16 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-8">
+      <div className="flex w-full max-w-[1240px]">
+        <div className="w-full h-full px-8 lg:grid grid-cols-2 lg:gap-16 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-8">
           <div className="flex font-sans flex-col items-center justify-center text-left">
             <h1 className="w-full lg:text-5xl font-light mb-8 sm:text-xl">
               <strong className="lg:text-7xl text-orange-600 font-black sm:text-2xl">
