@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 
 const Home = () => {
-  const [characterList, setCharacterList] = useState([]);
+  const [/*characterList,*/ setCharacterList] = useState([]);
 
   useEffect(() => {
     api
@@ -18,9 +18,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-[1280px] w-[100%] flex flex-col relative m-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <main className="w-[100%] flex align-center justify-center">
       <Hero />
-      <div>
+      {/*<div>
         <h2>Lista</h2>
         <p>Bla bla bla</p>
         <ul>
@@ -30,8 +30,8 @@ const Home = () => {
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </div>*/}
+    </main>
   );
 };
 

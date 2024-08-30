@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Lato', 'sans-serif'], // Substitui a fonte padrão sans-serif
+      },
+    },
+    screens: {
+      'sm': '240px',
+      'md': '480px',
+      'lg': '720px'
+    },
   },
   plugins: [],
 }
