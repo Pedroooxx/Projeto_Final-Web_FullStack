@@ -9,7 +9,7 @@ const Hero = () => {
           "linear-gradient(295deg, #000000FF 0%, #2A2A2AFF 100%)",
       }}
     >
-      <div className="flex w-full max-w-[1240px]">
+      <div className="w-full max-w-[1240px]">
         <div className="w-full h-full px-8 lg:grid grid-cols-2 lg:gap-16 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-8">
           <div className="flex font-sans flex-col items-center justify-center text-left">
             <h1 className="w-full lg:text-5xl font-light mb-8 sm:text-xl">

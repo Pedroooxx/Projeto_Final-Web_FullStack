@@ -13,7 +13,8 @@ export default {
     screens: {
       'sm': '240px',
       'md': '480px',
-      'lg': '720px'
+      'lg': '720px',
+      'xl': '960px'
     },
   },
   plugins: [],

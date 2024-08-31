@@ -24,7 +24,7 @@ const RegisterBox = () => {
 
     } catch (error) {
       // Exibe mensagem de erro
-      setMessage("Erro ao registrar. Tente novamente.");
+      setMessage("Erro ao registrar! Verifique os campos.");
       console.error("Erro ao registrar:", error);
     }
   };
@@ -74,7 +74,7 @@ const RegisterBox = () => {
               <div className="flex items-center justify-center gap-4 mb-4">
                 <button
                   type="submit"
-                  className="flex items-center py-2 px-4 text-white rounded-full cursor-pointer bg-purple-600 transition-all duration-300 
+                  className="flex items-center py-2 px-4 text-white rounded-full border-0 cursor-pointer bg-purple-600 transition-all duration-300 
                 hover:bg-orange-600 hover:px-8 active:bg-orange-200 active:text-slate-500"
                 >
                   Registrar

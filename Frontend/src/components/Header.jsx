@@ -4,6 +4,12 @@ const Header = () => {
       <div className="flex w-full max-w-[1240px] h-40 items-center justify-between px-6">
         <img className="h-24" src="/logo.png" alt="Logo" />
         <div className="flex items-center justify-center gap-20">
+        <a
+            href="/character"
+            className="transition-all duration-300 hover:text-orange-600 hover:text-lg active:text-orange-200 lg:block sm:hidden"
+          >
+            Personagens
+          </a>
           <a
             href="/"
             className="transition-all duration-300 hover:text-orange-600 hover:text-lg active:text-orange-200 lg:block sm:hidden"

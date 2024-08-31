@@ -79,7 +79,7 @@ const LoginBox = () => {
               <div className="flex items-center justify-center gap-4 mb-4">
                 <button
                   type="submit"
-                  className="flex items-center py-2 px-4 text-white rounded-full cursor-pointer bg-purple-600 transition-all duration-300 
+                  className="flex items-center py-2 px-4 text-white rounded-full cursor-pointer border-0 bg-purple-600 transition-all duration-300 
                 hover:bg-orange-600 hover:px-8 active:bg-orange-200 active:text-slate-500"
                 >
                   Entrar
