@@ -1,4 +1,34 @@
+import { useState } from "react";
+import api from "../services/api";
+
 const RegisterBox = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(""); // Estado único para a mensagem
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await api.post("/signup", { username, password });
+
+      // Exibe mensagem de sucesso
+      setMessage("Registro realizado com sucesso!");
+
+      // Limpa os campos após o registro
+      setUsername("");
+      setPassword("");
+
+      // Exibe o sucesso no console (ou redireciona)
+      console.log("Usuário registrado com sucesso!", response.data);
+
+    } catch (error) {
+      // Exibe mensagem de erro
+      setMessage("Erro ao registrar. Tente novamente.");
+      console.error("Erro ao registrar:", error);
+    }
+  };
+
   return (
     <div
       className="w-full lg:h-[900px] sm:h-fit lg:pt-0 lg:pb-0 sm:pt-44 sm:pb-12 bg-center flex align-center justify-center"
@@ -20,26 +50,30 @@ const RegisterBox = () => {
             <p className="mb-12">
               Crie uma conta para adicionar personagens, editar ou excluir a sua vontade.
             </p>
-            <form action="">
+            <form onSubmit={handleRegister}>
               <div className="flex flex-col gap-2 mb-4">
                 <strong className="text-lg font-light">Nome de Usuário:</strong>
                 <input
                   type="text"
                   placeholder="Digite aqui..."
                   className="rounded-full px-4 py-3 text-white"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="flex flex-col gap-2 mb-4">
                 <strong className="text-lg font-light">Senha:</strong>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Digite aqui..."
                   className="rounded-full px-4 py-3 text-white"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4 mb-4">
                 <button
-                  href="/login"
+                  type="submit"
                   className="flex items-center py-2 px-4 text-white rounded-full cursor-pointer bg-purple-600 transition-all duration-300 
                 hover:bg-orange-600 hover:px-8 active:bg-orange-200 active:text-slate-500"
                 >
@@ -48,6 +82,12 @@ const RegisterBox = () => {
                 </button>
                 <span>ou <a href="/login" className="underline hover:text-orange-600 transition-all duration-300">Entre</a></span>
               </div>
+              {/* Renderiza a mensagem condicionalmente */}
+              {message && (
+                <div className="text-center py-2 px-4 bg-gray-800 text-white rounded-full">
+                  {message}
+                </div>
+              )}
             </form>
           </div>
         </div>
