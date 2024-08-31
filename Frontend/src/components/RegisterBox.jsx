@@ -4,7 +4,7 @@ import api from "../services/api";
 const RegisterBox = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(""); // Estado único para a mensagem
+  const [message, setMessage] = useState("");
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -12,18 +12,18 @@ const RegisterBox = () => {
     try {
       const response = await api.post("/signup", { username, password });
 
-      // Exibe mensagem de sucesso
+      
       setMessage("Registro realizado com sucesso!");
 
-      // Limpa os campos após o registro
+      
       setUsername("");
       setPassword("");
 
-      // Exibe o sucesso no console (ou redireciona)
+      
       console.log("Usuário registrado com sucesso!", response.data);
 
     } catch (error) {
-      // Exibe mensagem de erro
+      
       setMessage("Erro ao registrar! Verifique os campos.");
       console.error("Erro ao registrar:", error);
     }
@@ -82,7 +82,7 @@ const RegisterBox = () => {
                 </button>
                 <span>ou <a href="/login" className="underline hover:text-orange-600 transition-all duration-300">Entre</a></span>
               </div>
-              {/* Renderiza a mensagem condicionalmente */}
+              
               {message && (
                 <div className="text-center py-2 px-4 bg-gray-800 text-white rounded-full">
                   {message}

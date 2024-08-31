@@ -29,7 +29,7 @@ const UpdateCharacter = () => {
     setLoading(true);
 
     try {
-      // Envia a atualização para o backend
+      
       const response = await api.put(
         `/characters/${id}`,
         { name, fullname, house, status },

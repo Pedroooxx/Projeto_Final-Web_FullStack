@@ -4,17 +4,17 @@ import api from "../services/api";
 const CharacterListFull = () => {
   const [characters, setCharacters] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(4); // Número de itens por página
+  const [itemsPerPage] = useState(4);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
         const response = await api.get("/characters");
-        // Log da resposta do servidor
+        
         setCharacters(response.data);
       } catch (error) {
-        // Log do erro com detalhes
+        
         console.error(
           "Erro ao buscar personagens:",
           error.response ? error.response.data : error.message
@@ -30,7 +30,6 @@ const CharacterListFull = () => {
     fetchCharacters();
   }, []);
 
-  // Calculando o índice do último e primeiro item na página atual
   const indexOfLastCharacter = currentPage * itemsPerPage;
   const indexOfFirstCharacter = indexOfLastCharacter - itemsPerPage;
   const currentCharacters = characters.slice(
@@ -38,10 +37,9 @@ const CharacterListFull = () => {
     indexOfLastCharacter
   );
 
-  // Função para alterar de página
+  
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Número total de páginas
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(characters.length / itemsPerPage); i++) {
     pageNumbers.push(i);

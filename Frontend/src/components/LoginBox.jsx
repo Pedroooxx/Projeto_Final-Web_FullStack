@@ -1,10 +1,10 @@
 import { useState } from "react";
-import api from "../services/api"; // Certifique-se de que 'api' está configurado corretamente para incluir o token
+import api from "../services/api";
 
 const LoginBox = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(""); // Estado único para a mensagem
+  const [message, setMessage] = useState("");
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -14,21 +14,16 @@ const LoginBox = () => {
       const response = await api.post("/signin", { username, password });
       console.log("Resposta do servidor:", response);
 
-      // Armazena o token recebido no localStorage
       localStorage.setItem("authToken", response.data.token);
 
-      // Exibe mensagem de sucesso
       setMessage("Login realizado com sucesso!");
 
-      // Limpa os campos após o login
       setUsername("");
       setPassword("");
 
-      // Redirecionar ou fazer outras ações após o login bem-sucedido
-      // Exemplo: redirecionar para a página inicial
       window.location.href = "/character";
     } catch (error) {
-      // Exibe mensagem de erro
+      
       console.error("Erro ao fazer login:", error.response?.data);
       setMessage(error.response?.data?.message || "Erro ao fazer login. Verifique suas credenciais.");
     }
@@ -95,7 +90,6 @@ const LoginBox = () => {
                   </a>
                 </span>
               </div>
-              {/* Renderiza a mensagem condicionalmente */}
               {message && (
                 <div className="text-center py-2 px-4 bg-gray-800 text-white rounded-full">
                   {message}

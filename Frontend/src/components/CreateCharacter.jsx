@@ -19,7 +19,7 @@ const CreateCharacter = () => {
       return;
     }
 
-    // Log dos dados que serão enviados
+    
     console.log("Dados a serem enviados:", { name, fullname, house, status });
 
     try {
@@ -34,23 +34,23 @@ const CreateCharacter = () => {
         }
       );
 
-      // Log da resposta do servidor
+      
       console.log("Resposta do servidor:", response.data);
 
       setMessage(`Personagem criado com sucesso!`);
 
-      // Limpar campos após sucesso
+      
       setName("");
       setFullname("");
       setHouse("");
       setStatus("");
 
-      // Limpar mensagem após 5 segundos
+      
       setTimeout(() => {
         setMessage("");
       }, 5000);
     } catch (error) {
-      // Log do erro com detalhes
+      
       console.error(
         "Erro ao criar personagem:",
         error.response ? error.response.data : error.message
@@ -61,7 +61,6 @@ const CreateCharacter = () => {
         }`
       );
 
-      // Limpar mensagem após 5 segundos
       setTimeout(() => {
         setMessage("");
       }, 5000);

@@ -16,7 +16,6 @@ const DeleteCharacter = () => {
       return;
     }
 
-    // Log do ID que será enviado
     console.log("ID do personagem a ser excluído:", id);
 
     try {
@@ -27,20 +26,17 @@ const DeleteCharacter = () => {
         },
       });
 
-      // Log da resposta do servidor
       console.log("Resposta do servidor:", response.data);
 
       setMessage(`Personagem excluído com sucesso!`);
 
-      // Limpar campo após sucesso
       setId("");
 
-      // Limpar mensagem após 5 segundos
       setTimeout(() => {
         setMessage("");
       }, 5000);
     } catch (error) {
-      // Log do erro com detalhes
+      
       console.error(
         "Erro ao excluir personagem:",
         error.response ? error.response.data : error.message
@@ -51,7 +47,6 @@ const DeleteCharacter = () => {
         }`
       );
 
-      // Limpar mensagem após 5 segundos
       setTimeout(() => {
         setMessage("");
       }, 5000);
