@@ -1,4 +1,39 @@
+import { useState } from "react";
+import api from "../services/api"; // Certifique-se de que 'api' está configurado corretamente para incluir o token
+
 const LoginBox = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(""); // Estado único para a mensagem
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    console.log("Enviando dados:", { username, password });
+
+    try {
+      const response = await api.post("/signin", { username, password });
+      console.log("Resposta do servidor:", response);
+
+      // Armazena o token recebido no localStorage
+      localStorage.setItem("authToken", response.data.token);
+
+      // Exibe mensagem de sucesso
+      setMessage("Login realizado com sucesso!");
+
+      // Limpa os campos após o login
+      setUsername("");
+      setPassword("");
+
+      // Redirecionar ou fazer outras ações após o login bem-sucedido
+      // Exemplo: redirecionar para a página inicial
+      window.location.href = "/character";
+    } catch (error) {
+      // Exibe mensagem de erro
+      console.error("Erro ao fazer login:", error.response?.data);
+      setMessage(error.response?.data?.message || "Erro ao fazer login. Verifique suas credenciais.");
+    }
+  };
+
   return (
     <div
       className="w-full lg:h-[900px] sm:h-fit lg:pt-0 lg:pb-0 sm:pt-44 sm:pb-12 bg-center flex align-center justify-center"
@@ -14,40 +49,58 @@ const LoginBox = () => {
           <div className="w-full h-full flex flex-col z-1 text-left font-sans text-white">
             <h2 className="w-full lg:text-5xl font-light mb-4 sm:text-xl">
               <strong className="lg:text-5xl text-orange-600 font-black sm:text-2xl">
-                Entrar
+                Login
               </strong>
             </h2>
             <p className="mb-12">
-              Entre para adicionar personagens, editar ou excluir a sua vontade.
+              Entre para acessar e gerenciar seus personagens.
             </p>
-            <form action="">
+            <form onSubmit={handleLogin}>
               <div className="flex flex-col gap-2 mb-4">
                 <strong className="text-lg font-light">Nome de Usuário:</strong>
                 <input
                   type="text"
                   placeholder="Digite aqui..."
                   className="rounded-full px-4 py-3 text-white"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="flex flex-col gap-2 mb-4">
                 <strong className="text-lg font-light">Senha:</strong>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Digite aqui..."
                   className="rounded-full px-4 py-3 text-white"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4 mb-4">
                 <button
-                  href="/login"
+                  type="submit"
                   className="flex items-center py-2 px-4 text-white rounded-full cursor-pointer bg-purple-600 transition-all duration-300 
                 hover:bg-orange-600 hover:px-8 active:bg-orange-200 active:text-slate-500"
                 >
                   Entrar
                   <i className="fi fi-sr-arrow-circle-right ml-2 mt-1"></i>
                 </button>
-                <span>ou <a href="/register" className="underline hover:text-orange-600 transition-all duration-300">Registre-se</a></span>
+                <span>
+                  ou{" "}
+                  <a
+                    href="/register"
+                    className="underline hover:text-orange-600 transition-all duration-300"
+                  >
+                    Registre-se
+                  </a>
+                </span>
               </div>
+              {/* Renderiza a mensagem condicionalmente */}
+              {message && (
+                <div className="text-center py-2 px-4 bg-gray-800 text-white rounded-full">
+                  {message}
+                </div>
+              )}
             </form>
           </div>
         </div>
