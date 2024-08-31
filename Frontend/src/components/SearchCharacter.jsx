@@ -51,7 +51,7 @@ const SearchCharacter = () => {
       </form>
 
       {/* Quadro que estará sempre visível */}
-      <div className="mt-8 p-8 bg-black bg-opacity-90 text-left rounded-3xl w-full max-w-[400px]">
+      <div className="p-8 bg-black bg-opacity-90 text-left rounded-3xl w-full max-w-[400px]">
         <h2 className="lg:text-2xl font-bold text-nowrap mb-4 sm:text-lg">Detalhes do Personagem:</h2>
         {character ? (
           <>
