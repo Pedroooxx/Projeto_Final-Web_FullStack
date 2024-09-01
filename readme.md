@@ -30,10 +30,10 @@
 Para utilizar o projeto é necessário instalar algumas coisas.
 
 ## Docker Desktop: **https://www.docker.com/products/docker-desktop/**
-ele será utilizado para criar imagens de um banco mysql e do redis para estratégias de cache.
+Será utilizado para criar imagens de um banco mysql e do redis para estratégias de cache.
 
 ## Extensão Docker: **ID:ms-azuretools.vscode-docker**
-recomendado para acompanhar a criação das imagens e subir os containers.
+Recomendado para acompanhar a criação das imagens e subir os containers.
 
 ## Abra o terminal no diretório: Projeto_Final-Web_FullStack\backend>
 
@@ -48,7 +48,7 @@ Use este comando para criar a imagem do redis
 **docker run --name redis-cache -p 6379:6379 -d redis**
 
 ## Extensão Database Client: **ID:cweijan.vscode-database-client2**
-Para criar o banco de dados MYSQL
+Usada para criar a conexão com um Banco de Dados MYSQL local.
 
 Para criar a conexão acesse a engrenagem:
 
@@ -61,8 +61,7 @@ e digite o comando SQL:
 
     CREATE DATABASE IF NOT EXISTS gotcharactersdb;
 
-Vá na Aba "Tables" dentro da BD e clique em +
-digite os comandos SQL para adicionar ambas as tabelas do projeto:
+Vá na Aba "Tables" dentro da BD e clique em + e digite os comandos SQL para adicionar ambas tabelas do projeto:
 
     CREATE TABLE gotcharacters (
     id INT PRIMARY KEY AUTO_INCREMENT,
