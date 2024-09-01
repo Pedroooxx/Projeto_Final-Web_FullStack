@@ -1,16 +1,4 @@
-const { createClient } = require("@redis/client");
-const connection = require("./connection");
-
-// Cria e configura o cliente Redis
-const redisClient = createClient({
-  url: "redis://localhost:6379",
-});
-
-redisClient.on("error", (err) => {
-  console.error("Redis error:", err);
-});
-
-redisClient.connect();
+const { connection, redisClient } = require("./connection");
 
 // Define o tempo de expiração do cache (em segundos)
 const CACHE_EXPIRATION = 3600; // 1 hora de cache
