@@ -1,12 +1,13 @@
-const jwt = require("jsonwebtoken");
-
-require("dotenv").config();
+const jwt = require('jsonwebtoken');
+const logger = require('../config/logger');
+require('dotenv').config();
 
 const authenticateToken = (req, res, next) => {
-  const token = req.header("Authorization")?.split(" ")[1]; // Expecting Bearer <token>
+  const token = req.header('Authorization')?.split(' ')[1]; // Espera Bearer <token>
 
   if (!token) {
-    return res.status(401).json({ message: "Access denied" });
+    logger.warn('Access denied: No token provided.');
+    return res.status(401).json({ message: 'Accesso Negado' });
   }
 
   try {
@@ -14,7 +15,8 @@ const authenticateToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(403).json({ message: "Invalid token" });
+    logger.error(`Invalid token: ${err.message}`);
+    return res.status(403).json({ message: 'Acesso negado - Faça login' });
   }
 };
 
