@@ -47,9 +47,7 @@ Use este comando para criar a imagem do redis
 
 **docker run --name redis-cache -p 6379:6379 -d redis**
 
----------------
-
-### Extensão Database Client: **ID:cweijan.vscode-database-client2**
+## Extensão Database Client: **ID:cweijan.vscode-database-client2**
 Para criar o banco de dados MYSQL
 
 Para criar a conexão acesse a engrenagem:
