@@ -64,18 +64,18 @@ e digite o comando SQL:
 Vá na Aba "Tables" dentro da BD e clique em + e digite os comandos SQL para adicionar ambas tabelas do projeto:
 
     CREATE TABLE gotcharacters (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
-    fullname VARCHAR(48) NOT NULL,
-    house VARCHAR(20) NOT NULL,
-    status VARCHAR(12) NOT NULL
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(20) NOT NULL,
+        fullname VARCHAR(48) NOT NULL,
+        house VARCHAR(20) NOT NULL,
+        status VARCHAR(12) NOT NULL
     );
 
     CREATE TABLE users (
-      id INT NOT NULL AUTO_INCREMENT,
-      username VARCHAR(50) NOT NULL UNIQUE,
-      password VARCHAR(255) NOT NULL,
-      PRIMARY KEY (id)
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        PRIMARY KEY (id)
     );
 
 ------------------
