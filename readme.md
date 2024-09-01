@@ -14,17 +14,12 @@
 
 ### Renomeie o arquivo ".env example" para somente ".env" coloque as informações faltantes:
 
-PORT=3333
-
-MYSQL_HOST=localhost
-
-MYSQL_USER=
-
-MYSQL_PASSWORD=
-
-MYSQL_DB=gotcharactersdb
-
-JWT_SECRET=
+    PORT=3333
+    MYSQL_HOST=localhost
+    MYSQL_USER=
+    MYSQL_PASSWORD=
+    MYSQL_DB=gotcharactersdb
+    JWT_SECRET=
 
 > Crie um nome de usuario, senha e um segredo para a autenticação JTW.
 
