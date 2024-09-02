@@ -11,14 +11,17 @@ const getAll = async (_req, res) => {
   }
 };
 
-const getCharacter = async (req, res) => {
-  const { id } = req.params;
+const getCharacterByName = async (req, res) => {
+  const { name } = req.params;
   try {
-    const character = await characterModel.getCharacter(id);
-    logger.info(`Character with ID ${id} retrieved successfully.`);
+    const character = await characterModel.getCharacterByName(name);
+    if (!character) {
+      return res.status(404).json({ message: 'Character not found' });
+    }
+    logger.info(`Character with name ${name} retrieved successfully.`);
     return res.status(200).json(character);
   } catch (error) {
-    logger.error(`Error getting character with ID ${id}: ${error.message}`);
+    logger.error(`Error getting character with name ${name}: ${error.message}`);
     return res.status(500).json({ message: 'Internal Server Error' });
   }
 };
@@ -60,7 +63,7 @@ const updateCharacter = async (req, res) => {
 
 module.exports = {
   getAll,
-  getCharacter,
+  getCharacterByName,
   createCharacter,
   deleteCharacter,
   updateCharacter,

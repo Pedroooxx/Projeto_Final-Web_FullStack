@@ -6,7 +6,7 @@ const characterValidate = require("./middlewares/characterValidate");
 const authenticateToken = require("./middlewares/authenticateToken");
 
 router.get("/characters", charactersController.getAll);
-router.get("/characters/:id", charactersController.getCharacter);
+router.get("/characters/:name", charactersController.getCharacterByName);
 
 router.post(
   "/characters",
