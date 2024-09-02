@@ -26,19 +26,24 @@ const getCharacterByName = async (name) => {
     if (cacheData) {
       return JSON.parse(cacheData);
     }
-    const [rows] = await connection.execute("SELECT * FROM gotcharacters WHERE name = ?", [name]);
-    const character = rows[0];
-    if (character) {
+
+    const query = "SELECT * FROM gotcharacters WHERE name LIKE ?";
+    const [rows] = await connection.execute(query, [`%${name}%`]);
+
+    if (rows.length === 1) {
+      const character = rows[0];
       await redisClient.setEx(cacheKey, CACHE_EXPIRATION, JSON.stringify(character));
+      logger.info(`Character with name "${character.name}" retrieved successfully from database and cached.`);
       return character;
     } else {
       return null;
     }
   } catch (error) {
-    logger.error(`Error getting character by name: ${error.message}`);
+    logger.error(`Error getting character by name "${name}": ${error.message}`);
     throw error;
   }
 };
+
 
 const createCharacter = async (gotcharacter) => {
   const { name, fullname, house, status } = gotcharacter;
