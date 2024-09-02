@@ -2,6 +2,8 @@
 
 **Projeto final da disciplina de Fullstack** onde personagens da série podem ser armazenados em uma BD MySQL através da tecnologia de containers Docker em uma API Back-End node.js integrada em uma aplicação Front-End React com Tailwind CSS.
 
+![Paginas](https://github.com/user-attachments/assets/bbdd77dc-2fc2-4c08-aa32-fed79e0c00cc)
+
 # Como Usar?
 
 ## Instale as dependencias tanto do Back-End quanto do front end
