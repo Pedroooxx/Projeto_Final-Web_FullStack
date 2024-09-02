@@ -16,7 +16,7 @@ const authenticateToken = (req, res, next) => {
     next();
   } catch (err) {
     logger.error(`Invalid token: ${err.message}`);
-    return res.status(403).json({ message: 'Acesso negado - Faça login' });
+    return res.status(403).json({ message: 'Faça login' });
   }
 };
 

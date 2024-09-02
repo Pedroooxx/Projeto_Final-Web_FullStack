@@ -13,13 +13,6 @@ const CreateCharacter = () => {
 
     const token = localStorage.getItem("authToken");
 
-    if (!token) {
-      setMessage("Token de autenticação não encontrado. Faça login novamente.");
-      console.log("Token não encontrado.");
-      return;
-    }
-
-    
     console.log("Dados a serem enviados:", { name, fullname, house, status });
 
     try {

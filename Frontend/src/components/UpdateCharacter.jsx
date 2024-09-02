@@ -20,12 +20,6 @@ const UpdateCharacter = () => {
 
     const token = localStorage.getItem("authToken");
 
-    if (!token) {
-      setMessage("Token de autenticação não encontrado. Faça login novamente.");
-      console.log("Token não encontrado.");
-      return;
-    }
-
     setLoading(true);
 
     try {
