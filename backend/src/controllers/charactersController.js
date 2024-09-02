@@ -15,6 +15,7 @@ const getCharacter = async (req, res) => {
   const { id } = req.params;
   try {
     const character = await characterModel.getCharacter(id);
+    logger.info(`Character with ID ${id} retrieved successfully.`);
     return res.status(200).json(character);
   } catch (error) {
     logger.error(`Error getting character with ID ${id}: ${error.message}`);
@@ -25,6 +26,7 @@ const getCharacter = async (req, res) => {
 const createCharacter = async (req, res) => {
   try {
     const createdCharacter = await characterModel.createCharacter(req.body);
+    logger.info(`Character created successfully.`);
     return res.status(201).json(createdCharacter);
   } catch (error) {
     logger.error(`Error creating character: ${error.message}`);
@@ -36,6 +38,7 @@ const deleteCharacter = async (req, res) => {
   const { id } = req.params;
   try {
     await characterModel.deleteCharacter(id);
+    logger.info(`Character with ID ${id} deleted successfully.`);
     return res.status(204).json();
   } catch (error) {
     logger.error(`Error deleting character with ID ${id}: ${error.message}`);
@@ -47,6 +50,7 @@ const updateCharacter = async (req, res) => {
   const { id } = req.params;
   try {
     await characterModel.updateCharacter(id, req.body);
+    logger.info(`Character with ID ${id} updated successfully.`);
     return res.status(204).json();
   } catch (error) {
     logger.error(`Error updating character with ID ${id}: ${error.message}`);

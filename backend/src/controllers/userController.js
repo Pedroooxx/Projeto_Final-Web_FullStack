@@ -13,6 +13,7 @@ const createUser = async (req, res) => {
       ...req.body,
       password: hashPassword,
     });
+    logger.info(`User created successfully with ID ${createdUser.insertId}`);
     return res.status(201).json(createdUser);
   } catch (error) {
     logger.error(`Error creating user: ${error.message}`);
@@ -25,10 +26,12 @@ const enterUser = async (req, res) => {
   try {
     const user = await userModel.findUserByUsername(username);
     if (!user) {
+      logger.warn(`Failed login attempt for username: ${username}`);
       return res.status(401).json({ message: "Username or password incorrect" });
     }
     const isPasswordValid = bcrypt.compareSync(password, user.password);
     if (!isPasswordValid) {
+      logger.warn(`Failed login attempt for username: ${username}`);
       return res.status(401).json({ message: "Username or password incorrect" });
     }
     const token = jwt.sign(
@@ -38,6 +41,7 @@ const enterUser = async (req, res) => {
         expiresIn: "1h", // Token válido por 1 hora
       }
     );
+    logger.info(`User ${username} logged in successfully`);
     return res.status(200).json({ token });
   } catch (error) {
     logger.error(`Error logging in user: ${error.message}`);
