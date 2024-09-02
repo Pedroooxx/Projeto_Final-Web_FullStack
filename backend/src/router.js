@@ -31,11 +31,11 @@ const userValidate = require("./middlewares/userValidate");
 const signupValidate = require("./middlewares/signupValidate");
 
 router.post(
-  "/signup",
+  "/new-user",
   userValidate.userValidate,
   signupValidate.signupValidate,
   userController.createUser
 );
-router.post("/signin", userValidate.userValidate, userController.enterUser);
+router.post("/login", userValidate.userValidate, userController.enterUser);
 
 module.exports = router;

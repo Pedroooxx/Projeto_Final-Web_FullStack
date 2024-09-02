@@ -10,7 +10,7 @@ const RegisterBox = () => {
     event.preventDefault();
 
     try {
-      const response = await api.post("/signup", { username, password });
+      const response = await api.post("/new-user", { username, password });
 
       
       setMessage("Registro realizado com sucesso!");

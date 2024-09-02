@@ -11,7 +11,7 @@ const LoginBox = () => {
     console.log("Enviando dados:", { username, password });
 
     try {
-      const response = await api.post("/signin", { username, password });
+      const response = await api.post("/login", { username, password });
       console.log("Resposta do servidor:", response);
 
       localStorage.setItem("authToken", response.data.token);
