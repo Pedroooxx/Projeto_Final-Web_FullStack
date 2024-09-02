@@ -6,7 +6,7 @@
 
 # Como Usar?
 
-## Instale as dependencias tanto do Back-End quanto do front end
+## Instale as dependencias tanto do Back-End quanto do Front-End
 
 **Projeto_Final-Web_FullStack\backend> npm i**
 
