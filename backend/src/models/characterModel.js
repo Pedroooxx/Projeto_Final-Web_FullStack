@@ -44,7 +44,6 @@ const getCharacterByName = async (name) => {
   }
 };
 
-
 const createCharacter = async (gotcharacter) => {
   const { name, fullname, house, status } = gotcharacter;
   const query = "INSERT INTO gotcharacters(name, fullname, house, status) VALUES (?, ?, ?, ?)";
